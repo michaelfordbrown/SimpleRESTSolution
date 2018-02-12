@@ -27,10 +27,17 @@ namespace SimpleRESTServer.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         // GET: api/Person/5
-        public Person Get(int id)
+        public Person Get(long id)
         {
             PersonPersistence pp = new PersonPersistence();
             Person person = pp.GetPerson(id);
+            if (person == null)
+            {
+                //throw new HttpResponseException(new HttpResponseMessage(HttpStatusCode.NotFound));
+                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.NotFound);
+                response.Headers.Location = new Uri(Request.RequestUri, String.Format("person/{0}", id));
+                throw new HttpResponseException(response);
+            }
             return person;
         }
 
