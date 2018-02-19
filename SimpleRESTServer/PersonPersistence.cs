@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using MySql.Data;
@@ -21,7 +22,7 @@ namespace SimpleRESTServer
         public PersonPersistence()
         {
             string myConnectionString;
-            myConnectionString = "server=localhost;uid=root;database=employeedb";
+            myConnectionString = ConfigurationManager.ConnectionStrings["localDB"].ConnectionString;
             try
             {
                 conn = new MySql.Data.MySqlClient.MySqlConnection();
@@ -44,7 +45,7 @@ namespace SimpleRESTServer
         {
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection
             {
-                ConnectionString = "server=localhost;uid=root;database=employeedb"
+                ConnectionString = ConfigurationManager.ConnectionStrings["localDB"].ConnectionString
             };
 
             try
@@ -95,7 +96,7 @@ namespace SimpleRESTServer
         {
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection
             {
-                ConnectionString = "server=localhost;uid=root;database=employeedb"
+                ConnectionString = ConfigurationManager.ConnectionStrings["localDB"].ConnectionString
             };
 
             try
@@ -144,7 +145,7 @@ namespace SimpleRESTServer
         {
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection
             {
-                ConnectionString = "server=localhost;uid=root;database=employeedb"
+                ConnectionString = ConfigurationManager.ConnectionStrings["localDB"].ConnectionString
             };
             ArrayList personsArray = new ArrayList();
 
@@ -191,7 +192,7 @@ namespace SimpleRESTServer
         {
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection
             {
-                ConnectionString = "server=localhost;uid=root;database=employeedb"
+                ConnectionString = ConfigurationManager.ConnectionStrings["localDB"].ConnectionString
             };
 
             Person p = new Person();
@@ -240,7 +241,7 @@ namespace SimpleRESTServer
         {
             MySql.Data.MySqlClient.MySqlConnection conn = new MySql.Data.MySqlClient.MySqlConnection
             {
-                ConnectionString = "server=localhost;uid=root;database=employeedb"
+                ConnectionString = ConfigurationManager.ConnectionStrings["localDB"].ConnectionString
             };
             long id = 0;
 
